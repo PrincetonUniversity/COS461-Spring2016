@@ -7,7 +7,7 @@
 
 To get started install these softwares on your host machine:
 
-1. Install ***Vagrant***, it is a wrapper around virtualization softwares like VirtualBox, VMWare etc.: http://www.vagrantup.com/downloads
+1. Install ***Vagrant***, it is a wrapper around virtualization softwares like VirtualBox, VMWare etc.: https://www.vagrantup.com/downloads.html
 
 2. Install ***VirtualBox***, this would be your VM provider: https://www.virtualbox.org/wiki/Downloads
 
@@ -22,12 +22,12 @@ To get started install these softwares on your host machine:
 
 * Clone the course repository from Github:
 ```bash 
-$ git clone https://github.com/PrincetonUniversity/<>
+$ git clone https://github.com/PrincetonUniversity/COS461-Spring2016.git
 ```
 
-* Change the directory to <>:
+* Change the directory to COS461-Spring2016:
 ```bash
-$ cd <>
+$ cd COS461-Spring2016
 ```
 
 * Now run the vagrant up command. This will read the Vagrantfile from the current directory and provision the VM accordingly:
