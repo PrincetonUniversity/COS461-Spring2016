@@ -1,5 +1,5 @@
 # COS461-Spring2016
-## Assignment0: Virtual Machine Setup
+## Assignment 0: Virtual Machine Setup
 
 ###Setting up the course VM
 
