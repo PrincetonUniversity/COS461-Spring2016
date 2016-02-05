@@ -29,7 +29,7 @@ Vagrant.configure(2) do |config|
   
   ## Notebook
   config.vm.provision "shell", run: "always", inline: <<-SHELL
-    ipython notebook --notebook-dir=/vagrant/spring2016/notebook --no-browser --ip=0.0.0.0 &
+    ipython notebook --notebook-dir=/vagrant/notebook --no-browser --ip=0.0.0.0 &
   SHELL
   
   ## CPU & RAM
