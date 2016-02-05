@@ -49,8 +49,8 @@ $ vagrant ssh
 
 * Programming assignments: You will find the programming assignments in the vm under the directory: /vagrant/notebook/assignments.
 ``` bash
-vagrant@cos461:~$ ls /vagrant/notebook/assignments
-assignment0
+vagrant@cos461:~$ ls /vagrant/notebook/assignment0
+README.md
 ```
 
 * Getting started with `notebook`: On your host machine, start the web browser. Now type the url, `http://127.0.0.1:8888/tree`. You will see the list of all the assignments for the course. Click on `assignment0/` and then click on `Instructions.ipynb` to start the notebook for `assignment0`. To run this notebook, refer to the set of basic instructions [here](https://jupyter-notebook.readthedocs.org/en/latest/examples/Notebook/rstversions/Notebook%20Basics.html). 
