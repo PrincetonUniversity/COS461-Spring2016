@@ -17,12 +17,12 @@ Vagrant.configure(2) do |config|
   
   ## Provisioning
   config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo apt-get install -y python-dev
-    sudo apt-get install -y python-pip
-    sudo pip install --upgrade ipython[all]
-    sudo apt-get install -y gccgo-go
-    #sudo mkdir /vagrant/notebook
+    #sudo apt-get update
+    #sudo apt-get install -y python-dev
+    #sudo apt-get install -y python-pip
+    #sudo pip install --upgrade ipython[all]
+    #sudo apt-get install -y gccgo-go
+    sudo apt-get install -y apache2-utils
   SHELL
 
   
