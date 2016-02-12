@@ -27,7 +27,7 @@ README.md dev
 
 * You will find the following files in the `dev` directory:
 ```bash
-vagrant@cos461:~$ ls /vagrant/notebook/assignment0/dev
+vagrant@cos461:~$ ls /vagrant/notebook/assignment1/dev
 Makefile          www               proxy.go          proxy_parse.h
 README            http_server.c     proxy_parse.c     test_scripts
 ```
