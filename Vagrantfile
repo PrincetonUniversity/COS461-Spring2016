@@ -14,7 +14,8 @@ Vagrant.configure(2) do |config|
   ## Guest Config
   config.vm.hostname = "cos461"
   config.vm.network "forwarded_port", guest: 8888, host: 8888
-  
+  config.ssh.forward_x11 = true
+ 
   ## Provisioning
   config.vm.provision "shell", inline: <<-SHELL
     #sudo apt-get update
