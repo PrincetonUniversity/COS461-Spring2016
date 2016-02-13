@@ -620,7 +620,8 @@ ParsedRequest_parse_server(struct ParsedRequest * parse, const char *buf,
 	  parse->buf = NULL;
 	  return -1;
      }
-     parse->path = full_addr;
+     parse->path = (char *)malloc(strlen(full_addr)+1);
+     strncpy(parse->path, full_addr, strlen(full_addr)+1);
      parse->version = full_addr + strlen(full_addr) + 1;
 
      if (parse->version == NULL) {
