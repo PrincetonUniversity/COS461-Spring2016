@@ -537,6 +537,134 @@ ParsedRequest_parse(struct ParsedRequest * parse, const char *buf,
      return ret;
 }
 
+
+/* 
+   Parse request buffer
+ 
+   Parameters: 
+   parse: ptr to a newly created ParsedRequest object
+   buf: ptr to the buffer containing the request (need not be NUL terminated)
+   and the trailing \r\n\r\n
+   buflen: length of the buffer including the trailing \r\n\r\n
+
+   Handles HTTP requests for web server. Does not handle protocol, host, and port.
+   
+   Return values:
+   -1: failure
+   0: success
+*/
+int 
+ParsedRequest_parse_server(struct ParsedRequest * parse, const char *buf, 
+		    int buflen)
+{
+     char *full_addr;
+     char *saveptr;
+     char *index;
+     char *currentHeader;
+
+     if (parse->buf != NULL) {
+	  debug("parse object already assigned to a request\n");
+	  return -1;
+     }
+   
+     if (buflen < MIN_REQ_LEN || buflen > MAX_REQ_LEN) {
+	  debug("invalid buflen %d", buflen);
+	  return -1;
+     }
+   
+     /* Create NUL terminated tmp buffer */
+     char *tmp_buf = (char *)malloc(buflen + 1); /* including NUL */
+     memcpy(tmp_buf, buf, buflen);
+     tmp_buf[buflen] = '\0';
+   
+     index = strstr(tmp_buf, "\r\n\r\n");
+     if (index == NULL) {
+	  debug("invalid request line, no end of header\n");
+	  free(tmp_buf);
+	  return -1;
+     }
+   
+     /* Copy request line into parse->buf */
+     index = strstr(tmp_buf, "\r\n");
+     if (parse->buf == NULL) {
+	  parse->buf = (char *) malloc((index-tmp_buf)+1);
+	  parse->buflen = (index-tmp_buf)+1;
+     }
+     memcpy(parse->buf, tmp_buf, index-tmp_buf);
+     parse->buf[index-tmp_buf] = '\0';
+
+     /* Parse request line */
+     parse->method = strtok_r(parse->buf, " ", &saveptr);
+     if (parse->method == NULL) {
+	  debug( "invalid request line, no whitespace\n");
+	  free(tmp_buf);
+	  free(parse->buf);
+	  parse->buf = NULL;
+	  return -1;
+     }
+     if (strcmp (parse->method, "GET")) {
+	  debug( "invalid request line, method not 'GET': %s\n", 
+		 parse->method);
+	  free(tmp_buf);
+	  free(parse->buf);
+	  parse->buf = NULL;
+	  return -1;
+     }
+
+     full_addr = strtok_r(NULL, " ", &saveptr);
+
+     if (full_addr == NULL) {
+	  debug( "invalid request line, no full address\n");
+	  free(tmp_buf);
+	  free(parse->buf);
+	  parse->buf = NULL;
+	  return -1;
+     }
+     parse->path = full_addr;
+     parse->version = full_addr + strlen(full_addr) + 1;
+
+     if (parse->version == NULL) {
+	  debug( "invalid request line, missing version\n");
+	  free(tmp_buf);
+	  free(parse->buf);
+	  parse->buf = NULL;
+	  return -1;
+     }
+     if (strncmp (parse->version, "HTTP/1.0", 8)) {
+	  debug( "invalid request line, unsupported version %s\n", 
+		 parse->version);
+	  free(tmp_buf);
+	  free(parse->buf);
+	  parse->buf = NULL;
+	  return -1;
+     }
+
+
+
+     /* Parse headers */
+     int ret = 0;
+     currentHeader = strstr(tmp_buf, "\r\n")+2;
+     while (currentHeader[0] != '\0' && 
+	    !(currentHeader[0] == '\r' && currentHeader[1] == '\n')) {
+	  
+	  //debug("line %s %s", parse->version, currentHeader);
+
+	  if (ParsedHeader_parse(parse, currentHeader)) {
+	       ret = -1;
+	       break;
+	  }
+
+	  currentHeader = strstr(currentHeader, "\r\n");
+	  if (currentHeader == NULL || strlen (currentHeader) < 2)
+	       break;
+
+	  currentHeader += 2;
+     }
+     free(tmp_buf);
+     return ret;
+}
+
+
 /* 
    ParsedRequest Private Methods
 */

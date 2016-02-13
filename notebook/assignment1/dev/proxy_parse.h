@@ -65,6 +65,11 @@ struct ParsedRequest* ParsedRequest_create();
 int ParsedRequest_parse(struct ParsedRequest * parse, const char *buf,
 			int buflen);
 
+/* Parse the request buffer in buf given that buf is of length buflen */
+/* Used for http server. Does not handle protocol, host, and port. */
+int ParsedRequest_parse_server(struct ParsedRequest * parse, const char *buf,
+			       int buflen);
+
 /* Destroy the parsing object. */
 void ParsedRequest_destroy(struct ParsedRequest *pr);
 
