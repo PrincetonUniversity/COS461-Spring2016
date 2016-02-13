@@ -628,6 +628,7 @@ ParsedRequest_parse_server(struct ParsedRequest * parse, const char *buf,
 	  debug( "invalid request line, missing version\n");
 	  free(tmp_buf);
 	  free(parse->buf);
+	  free(parse->path);
 	  parse->buf = NULL;
 	  return -1;
      }
@@ -636,6 +637,7 @@ ParsedRequest_parse_server(struct ParsedRequest * parse, const char *buf,
 		 parse->version);
 	  free(tmp_buf);
 	  free(parse->buf);
+	  free(parse->path);
 	  parse->buf = NULL;
 	  return -1;
      }
