@@ -618,6 +618,7 @@ ParsedRequest_parse_server(struct ParsedRequest * parse, const char *buf,
 	  free(tmp_buf);
 	  free(parse->buf);
 	  parse->buf = NULL;
+	  parse->path = NULL;
 	  return -1;
      }
      parse->path = (char *)malloc(strlen(full_addr)+1);
@@ -630,6 +631,7 @@ ParsedRequest_parse_server(struct ParsedRequest * parse, const char *buf,
 	  free(parse->buf);
 	  free(parse->path);
 	  parse->buf = NULL;
+	  parse->path = NULL;
 	  return -1;
      }
      if (strncmp (parse->version, "HTTP/1.0", 8)) {
@@ -639,6 +641,7 @@ ParsedRequest_parse_server(struct ParsedRequest * parse, const char *buf,
 	  free(parse->buf);
 	  free(parse->path);
 	  parse->buf = NULL;
+	  parse->path = NULL;
 	  return -1;
      }
 
