@@ -6,11 +6,11 @@ else
     port=$1
     mkdir tmp
     cd tmp
-    wget http://localhost:$port/ 2> /dev/null
-    wget http://localhost:$port/images/buses.jpg 2> /dev/null
-    wget http://localhost:$port/images/spacer.gif 2> /dev/null
-    wget http://localhost:$port/images/tranhd.gif 2> /dev/null
-    wget http://localhost:$port/images/transithd.gif 2> /dev/null
+    curl -0 -o index.html  http://localhost:$port/ 2> /dev/null
+    curl -0 -o buses.jpg  http://localhost:$port/images/buses.jpg 2> /dev/null
+    curl -0 -o spacer.gif http://localhost:$port/images/spacer.gif 2> /dev/null
+    curl -0 -o tranhd.gif  http://localhost:$port/images/tranhd.gif 2> /dev/null
+    curl -0 -o transithd.gif http://localhost:$port/images/transithd.gif 2> /dev/null
     diff -q index.html ../../www/index.html
     diff -q buses.jpg ../../www/images/buses.jpg
     diff -q spacer.gif ../../www/images/spacer.gif
