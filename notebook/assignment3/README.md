@@ -48,11 +48,11 @@ $ sudo apt-get install mininet
 ```
 
 
-This assignment has two parts: detecting portscan from measured traffic records using Spark, and detecting and mitigating DNS reflection attacks in Mininet. Each part is worth 10 points. The instructions for both parts of the assignment are in the form of iPython notebooks. 
+This assignment has two parts: detecting portscan from measured traffic records using Spark, and detecting and mitigating DNS reflection attacks in Mininet. **Each part is worth 10 points**. The instructions for both parts of the assignment are in the form of iPython notebooks. 
 To access the iPython notebooks, you can use a web browser on your host machine and type the URL http://localhost:8888/
 
 #### Submission and Grading
 
-You should submit your completed assignment by the date posted on the course website to [CS Dropbox](https://dropbox.cs.princeton.edu/COS461_S2016/Assignment3). 
+You should submit your completed proxy and web server by the date posted on the course website to [CS Dropbox](https://dropbox.cs.princeton.edu/COS461_S2016/Assignment3). 
 For the first part (Portscan), you only need to submit the iPython notebook. For the second part (DNS reflection), you need to submit the following files: mb.py and test.py. 
 
