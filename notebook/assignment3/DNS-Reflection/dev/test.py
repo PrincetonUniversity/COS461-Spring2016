@@ -19,9 +19,9 @@ class PacketHandler:
 
 
     def handle_packet(self, pkt):
-        # TODO: compute and print the ping and DNS
-        #       responses packet countes every minute
-        #       (See the writeup for details)
+        #TODO: compute and print the number of ping and DNS replies
+        #      received in each minutes. (See the writeup for more
+        #      details.)
         print "received packet"  
 
     def sniff(self):

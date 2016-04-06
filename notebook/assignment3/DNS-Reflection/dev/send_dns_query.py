@@ -8,7 +8,7 @@ def SendDnsQuery(src_ip, dns_srv, sleep_time):
     sleep(5)
     while True:
         qid = random.randint(0, 2 ** 16 - 1)
-        p=(IP(src=src_ip,dst=dns_srv)/UDP()/DNS(id = qid, rd=0,qd=DNSQR(qtype="ANY", qname="cos461.net")))
+        p=(IP(src=src_ip,dst=dns_srv)/UDP(sport = random.randint(1025, 2 ** 16 - 1))/DNS(id = qid, rd=0,qd=DNSQR(qtype="ANY", qname="cos461.net")))
         send(p)
         sleep(sleep_time)
 

@@ -5,7 +5,7 @@ from time import sleep
 def SendDnsQuery(dns_srv, sleep_time):
     sleep(5)
     while True:
-        call(["dig", "@%s" % dns_srv, "cos461.net"]) 
+        call(["dig", "@%s" % dns_srv, "ANY", "cos461.net"]) 
         sleep(sleep_time)
 
 if __name__ == "__main__":

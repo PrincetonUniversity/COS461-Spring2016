@@ -15,9 +15,12 @@ $TTL 1D
 			1D )		; minimum
 	NS	princeton	
 	MX	10 princeton 
-www	CNAME	princeton
-localhost	A	127.0.0.1
-jrex		A	10.0.0.1
-feamster	A	10.0.0.2
-kylej		A	10.0.0.3
-princeton	A	10.0.0.4
+	TXT	"COS461 - Computer Networks at Princeton University"
+
+www	        IN  CNAME	princeton
+localhost	IN  A	127.0.0.1
+jrex		IN  A	10.0.0.1
+feamster	IN  A	10.0.0.2
+kylej		IN  A	10.0.0.3
+princeton	IN  A	10.0.0.4
+
