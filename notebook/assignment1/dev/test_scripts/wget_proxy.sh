@@ -7,11 +7,11 @@ else
     pproxy=$2
     mkdir tmp
     cd tmp
-    wget -e use_proxy=yes http_proxy=localhost:$pproxy http://localhost:$port/ 2> /dev/null
-    wget -e use_proxy=yes http_proxy=localhost:$pproxy http://localhost:$port/images/buses.jpg 2> /dev/null
-    wget -e use_proxy=yes http_proxy=localhost:$pproxy http://localhost:$port/images/spacer.gif 2> /dev/null
-    wget -e use_proxy=yes http_proxy=localhost:$pproxy http://localhost:$port/images/tranhd.gif 2> /dev/null
-    wget -e use_proxy=yes http_proxy=localhost:$pproxy http://localhost:$port/images/transithd.gif 2> /dev/null
+    wget -e use_proxy=yes -e http_proxy=localhost:$pproxy http://localhost:$port/ 2> /dev/null
+    wget -e use_proxy=yes -e http_proxy=localhost:$pproxy http://localhost:$port/images/buses.jpg 2> /dev/null
+    wget -e use_proxy=yes -e http_proxy=localhost:$pproxy http://localhost:$port/images/spacer.gif 2> /dev/null
+    wget -e use_proxy=yes -e http_proxy=localhost:$pproxy http://localhost:$port/images/tranhd.gif 2> /dev/null
+    wget -e use_proxy=yes -e http_proxy=localhost:$pproxy http://localhost:$port/images/transithd.gif 2> /dev/null
     diff -q index.html ../../www/index.html
     diff -q buses.jpg ../../www/images/buses.jpg
     diff -q spacer.gif ../../www/images/spacer.gif
